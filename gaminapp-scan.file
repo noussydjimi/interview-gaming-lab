@@ -1,0 +1,25 @@
+
+gaming-app (alpine 3.20.3)
+==========================
+Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+
+Python (python-pkg)
+===================
+Total: 3 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 1, CRITICAL: 0)
+
+┌───────────────────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬────────────────────────────────────────────────────────────┐
+│        Library        │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                           Title                            │
+├───────────────────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+│ requests (METADATA)   │ CVE-2023-32681 │ MEDIUM   │ fixed  │ 2.26.0            │ 2.31.0        │ python-requests: Unintended leak of Proxy-Authorization    │
+│                       │                │          │        │                   │               │ header                                                     │
+│                       │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-32681                 │
+│                       ├────────────────┤          │        │                   ├───────────────┼────────────────────────────────────────────────────────────┤
+│                       │ CVE-2024-35195 │          │        │                   │ 2.32.0        │ requests: subsequent requests to the same host ignore cert │
+│                       │                │          │        │                   │               │ verification                                               │
+│                       │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-35195                 │
+├───────────────────────┼────────────────┼──────────┤        ├───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+│ setuptools (METADATA) │ CVE-2024-6345  │ HIGH     │        │ 65.5.1            │ 70.0.0        │ pypa/setuptools: Remote code execution via download        │
+│                       │                │          │        │                   │               │ functions in the package_index module in...                │
+│                       │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2024-6345                  │
+└───────────────────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴────────────────────────────────────────────────────────────┘
