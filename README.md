@@ -215,6 +215,7 @@ Run the following command
 
 `python gaming-app.py -u "https://news.ycombinator.com/" "https://fr.pinterest.com/" -o json`
 
+
 output:
 
 ```
@@ -461,8 +462,15 @@ To work properly, the workflow need some credential:
 ### Run the workflow locally
 Run the following command to run the workflow locally
 
+First copy your kubeconfig file to local repository. ACT only got access to the repository where the .git directory is located.
+
 ```
-act --secret-file gaming-app-secrets.env --var-file gaming-app-variables.env
+cp ~/.kube/config .
+```
+
+Then run the workflow
+```
+act --network host --secret-file gaming-app-secrets.env
 ```
 
 
