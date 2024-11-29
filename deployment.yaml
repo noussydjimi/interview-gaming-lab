@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gaming-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gaming-app
+  template:
+    metadata:
+      labels:
+        app: gaming-app
+    spec:
+      containers:
+      - name: gaming-app
+        image: noussydjimi/gaming-app:latest
+        command: ["/bin/sh"]
+        args: ["-c", "python gaming-app.py -u https://news.ycombinator.com/ -o stdout && sleep infinity"]
