@@ -457,7 +457,6 @@ The `gaming-app-secrets.env` file contain the necessary secret to make the workf
 To work properly, the workflow need some credential:
 - DOCKERHUB_USERNAME
 - DOCKERHUB_TOKEN
-- GITHUB_TOKEN
 
 ### Run the workflow locally
 Run the following command to run the workflow locally
@@ -478,11 +477,32 @@ act --network host --secret-file gaming-app-secrets.env
 
 To sanitize the domains list I used sed and AWK
 
-SED:
-`sed -E 's#^(https?://)?(www\.)?##; s#\.$##; s#^([a-zA-Z0-9.-]*)\.([a-zA-Z]{2,})$#\1.\2#;' domains.txt | tr '[:upper:]' '[:lower:]'`
+> :warning: **If you are using Linux based system**: The AWK and SED command might produce different result!
 
-AWK:
-`awk -F[/:] '{print tolower($NF)}' domains.txt | awk '{gsub(/\.$/, ""); print}'`
+### steps explanation for SED:
+
+```
+sed -E 's#^(https?://)?(www\.)?##; s#\.$##; s#(.*\.)?([a-zA-Z0-9-]+\.[a-zA-Z]{2,})#\2#;' domains.txt | tr '[:upper:]' '[:lower:]' | sed 's/facebok/facebook/g' | sort | uniq
+```
+
+- Remove http()s and www protocal. `s#^(https?://)?(www\.)?##; s#\.$##`
+- Sanitize the FQDN which end with a ".",  its indicate the absolute path from the root DNS. `s#\.$s#\.$##`
+- Remove the subdomain `s#\.$##; s#(.*\.)?([a-zA-Z0-9-]+\.[a-zA-Z]{2,})#\2#`
+- Print url in lowercase `tr '[:upper:]' '[:lower:]'`
+- Fixing missplelling `s/facebok/facebook/g`
+- Remove duplication  `sort | uniq`
+
+### steps explanation for AWK:
+
+```
+awk -F[/:] '{print tolower($NF)}' domains.txt | awk '{gsub(/\.$/, ""); print}' | awk '{gsub(/facebok/, "facebook"); print}' | awk -F. '{print $(NF-1)"."$NF}' | sort | uniq
+```
+
+- Remove the protocol that and print the url in lowercase letter. `awk -F[/:] '{print tolower($NF)}'`
+- Remove the possible "." at the end of the url which is only use by the root DNS server. `awk '{gsub(/\.$/, ""); print}'`
+- Replace facebok by facebook. `awk '{gsub(/facebok/, "facebook"); print}'`
+- Extract the 2 last field of a domain divided by dots. `awk -F. '{print $(NF-1)"."$NF}'`
+- Remove duplication after sorting to avoid the non consecutive duplication issue. `sort | uniq`
 
 ## BONUS
 
