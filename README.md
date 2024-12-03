@@ -10,7 +10,9 @@ Run the following command
 
 output:
 ```
+
 Success: The URL scheme 'https' is allowed.
+
 https://news.ycombinator.com/vote?id=42267725&how=up&goto=news
 https://news.ycombinator.com/from?site=adamkarvonen.github.io
 https://news.ycombinator.com/vote?id=42263178&how=up&goto=news
@@ -205,6 +207,7 @@ https://news.ycombinator.com/vote?id=42268461&how=up&goto=news
 https://news.ycombinator.com/from?site=arxiv.org
 https://news.ycombinator.com/submit
 https://news.ycombinator.com/user?id=rbanffy
+
 Success: The URL scheme 'https' is allowed.
 http://enable-javascript.com/
 ```
@@ -217,10 +220,11 @@ Run the following command
 
 
 output:
-
 ```
 Success: The URL scheme 'https' is allowed.
+
 Success: The URL scheme 'https' is allowed.
+
 {
     "https://news.ycombinator.com": [
         "/user",
@@ -452,7 +456,8 @@ The output of the scan is available at gaminapp-scan.file
 The scan clearly indicate that 2 library (requests and setuptools) used by the aplication are need to be updated as they facing security vulnerabilities.
 
 ## PART 3
-I used ACT to run the github workflow locally
+I used [ACT](https://github.com/nektos/act) to run the github workflow locally so please ignore he error in the github action tab since it was never intended to run up there since the cluster is set locally.
+
 The `gaming-app-secrets.env` file contain the necessary secret to make the workflow run correctly.
 To work properly, the workflow need some credential:
 - DOCKERHUB_USERNAME
