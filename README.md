@@ -506,3 +506,17 @@ awk -F[/:] '{print tolower($NF)}' domains.txt | awk '{gsub(/\.$/, ""); print}' |
 
 ## BONUS
 
+### Security:
+In the Docker and security scan tasks, there is concepts related to container security, such as managing privilege escalation and enforcing access control. The principle of least privilege is respected, ensuring that the Docker container is run by a non-root user to limit potential vulnerabilities.
+
+### Automation and Continious Integration/Continious Delivery:
+
+Automation and CI/CD refer to the processes of automating the build, testing, and deployment of the application.
+The automation and CD is done via github action only
+While the CI is done via github repository.
+
+### Text Processing:
+The task of extracting and sanitizing domains from URLs requires an understanding of regular expressions which is a subbranch of text processing.
+
+### Data Structures
+The application can organize the data differently wether trough a json format of simply by a filestream wich is the way linux handle stdout.
