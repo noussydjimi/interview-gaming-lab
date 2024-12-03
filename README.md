@@ -477,6 +477,9 @@ Then run the workflow
 act --network host --secret-file gaming-app-secrets.env
 ```
 
+### output:
+[View the Github-action execution recording](https://asciinema.org/a/zJaUlMlZhoCNsFnDtkc4eqYH5)
+
 
 ## PART 4
 
