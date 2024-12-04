@@ -1,6 +1,14 @@
 # interview-gaming-lab
 interview-gaming-lab
 
+# Requirement
+- [Docker desktop](https://docs.docker.com/desktop/setup/install/mac-install/)
+- [Dockerhub Token](https://docs.docker.com/security/for-developers/access-tokens/)
+- [Trivy](https://trivy.dev/v0.18.3/installation/)
+- [ACT](https://nektosact.com/installation/index.html)
+- Python
+
+
 ## PART 1
 
 ### Test the script with stdout
